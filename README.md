@@ -1,66 +1,67 @@
-# Get Ultimate Reports Updated (G.U.R.U) for Teams
+# Get Ultimate Reports Updated (G.U.R.U) Dashboard for Teams
 
-## Visão Geral
-Stack responsável por disponibilizar métricas técnicas e operacionais para que sejam visualizadas em um grafana.
+## Overview
+Stack responsible for providing technical and operational metrics to be visualized in grafana.
 
 ![arquitetura](img/arquitetura.png)
 
 #### Componentes:
-- Grafana: Responsável pelos dashboards, a pasta ./grafana possui toda configuração de datasources e dashboards para subir via docker.
-- Influxdb: Banco de dados timseries para as métricas, está subindo via docker sem volume mapeado, desse modo quando o container morre os registros são zerados.
-- Strapi: CMS para configurações, hoje temos duas coleções, datasources e custom-metrics.
-- metrics-service: Serviço feito em node, responsável por ler as configurações do strapi, e acessar os diferentes datasources para obter métricas, processa-las e inseri-las no influxdb, de modo recorrente conforme configuração de CRON no docker-compose.
+- Grafana: Responsible for dashboards, the ./grafana folder has all the configuration of datasources and dashboards to upload via docker.
+- Influxdb: Timeseries database for metrics, is rising via docker with no mapped volume, so when the container dies the records are reset.
+- Strapi: CMS for configurations, today we have two collections, datasources and custom-metrics.
+- metrics-service: Service in nodeJS, responsible for reading the configurations of the strapi, and accessing the different datasources to obtain metrics, process them and insert in influxdb, in a recurring way according to the CRON configuration in the docker-compose.
 
-## Requisitos
+## Requirements
 - Docker
 - Docker Compose
-- Node 12+: Apenas para desenvolvimento.
+- Node 12+: just for development.
 
-## Instruções
+## Instructions
 
-1 - Execute
+1 - Run
 ```
 docker-compose up
 ```
 
-2 - Em seguda é necessário configurar datasources para aplicação via strapi, através de: http://localhost:1337
+2 - Then it is necessary to configure datasources for application via strapi, through: http://localhost: 1337
 
-Acessar com usuário e senha padrões:
-usuário: admin@techmetrics.ciandt
-senha: techmetrics
+Default access:
+user: admin@techmetrics.ciandt
+pass: techmetrics
 
-3 - Feito isso basta acessar o grafana em http://localhost:3000 com usuário e senha "admin".
+3 - That done, just access the grafana at http://localhost:3000 with username and password "admin".
 
 ## Datasources
-Os datasources são implementações de providers externos, que devem disponibilizar os dados através de APIs Rest, atualmente os seguintes providers estão disponíveis:
+Datasources are implementations of external providers, who must make the data available through Rest APIs, currently the following providers are available:
 
 #### Azure
-O Meta deve ser configurado da seguinte forma:
+The Meta should be configured as follows:
 ```
 {
   "key": "123",
-  "organization": "Organização",
-  "project": "Projeto",
+  "organization": "Your Organization",
+  "project": "Your Project",
   "releases": [
-    "Nome dos stages da pipeline que devem ser considerados como deploys"
+    "Name of the stages in the pipeline that should be considered as deploys"
   ],
-  "bugsQuery": "WIQL para consultar bugs no Azure Devops"
+  "bugsQuery": "WIQL to query bugs in Azure Devops"
 }
 ```
+Provider name: azure
 
-As métricas suportadas são:
+The supported metrics are:
 - build
 - release
 - bug
 
 #### Sonar
-O Meta deve ser configurado da seguinte forma:
+The Meta should be configured as follows:
 ```
 {
   "key": "123",
-  "url": "URL do Sonar",
+  "url": "URL Sonar",
   "projects": [
-    "keys dos projetos"
+    "project keys"
   ],
   "metrics": [
     "tests",
@@ -84,27 +85,27 @@ O Meta deve ser configurado da seguinte forma:
   ]
 }
 ```
+Provider name: sonar
 
-As métricas são flexíveis, basta alterar o atributo "metrics" da configuração que a métrica será obtida do sonar, não existe nada hardcoded.
+These are the minimum metrics required for the solution's standard dashboards to function. If you want to import more metrics, this is allowed. Just add to the metrics list. If you want fewer metrics than standards, this is also allowed, but standard dashboards will not have all of your data loaded.
 
 #### Strapi
-O meta fica vazio:
+The meta is empty:
 ```
 {}
 ```
-
-As métricas são flexíveis, basta cadastra-las na collection "CustomMetrics" do strapi que ela será obtida, não existe nada hardcoded.
+Provider name: strapi
 
 ### Custom Providers
-Novos providers podem ser implementados, para jenkins, GOCD, Jira, entre outras possibilidades, para isso é necessário:
+New providers can be implemented, for jenkins, GOCD, Jira, among other possibilities, for that it is necessary:
 
-Criar um novo provider em:
+Create a new provider in:
 ```
 ./metrics-service/src/providers/nome_do_provider
 ```
-Seguir como exemplo o sonar.provider.
+Follow sonar.provider as an example.
 
-Em seguida é necessário acrescenta-lo no Record de provider.factory:
+Then it is necessary to add it to the Record of provider.factory:
 ```
 const providers: Record<string, ProviderFunction> = {
   azure: getAzureMetrics,
@@ -114,4 +115,4 @@ const providers: Record<string, ProviderFunction> = {
 };
 ```
 
-Feito isso basta que um novo datasource seja cadastrado apontando para esse provider dentro do strapi.
+That done, it is enough that a new datasource is registered pointing to this provider within the strapi.
