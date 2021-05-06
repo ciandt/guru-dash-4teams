@@ -1,5 +1,7 @@
 # Get Ultimate Reports Updated (G.U.R.U) Dashboard for Teams
 
+![sonar-metrics](img/sonar-metrics.png)
+
 ## Overview
 Stack responsible for providing technical and operational metrics to be visualized in grafana.
 
