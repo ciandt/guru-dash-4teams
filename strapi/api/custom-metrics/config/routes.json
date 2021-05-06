@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/custom-metrics",
+      "handler": "custom-metrics.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/custom-metrics/count",
+      "handler": "custom-metrics.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/custom-metrics/:id",
+      "handler": "custom-metrics.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/custom-metrics",
+      "handler": "custom-metrics.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/custom-metrics/:id",
+      "handler": "custom-metrics.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/custom-metrics/:id",
+      "handler": "custom-metrics.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "metrics-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./build/app.js",
+    "start:dev": "STRAPIURL=\"http://localhost:1337\" INFLUXDB=\"http://localhost:8086/devops\" CRON=\"* * * * *\" tsnd ./src/app.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fast-csv/parse": "^4.3.6",
+    "axios": "^0.21.1",
+    "influx": "^5.7.0",
+    "js-yaml": "^4.0.0",
+    "node-cron": "^2.0.3",
+    "pino": "^6.11.1",
+    "pino-pretty": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.0",
+    "@types/node": "^14.14.27",
+    "@types/node-cron": "^2.0.3",
+    "@types/pino": "^6.3.5",
+    "ts-node-dev": "^1.1.1",
+    "typescript": "^4.1.5"
+  }
+}
