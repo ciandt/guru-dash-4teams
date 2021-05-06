@@ -1,6 +1,9 @@
+![logo](img/logo.png)
+
 # Get Ultimate Reports Updated (G.U.R.U) Dashboard for Teams
 
-![sonar-metrics](img/sonar-metrics.png) ![tech-metrics](img/tech-metrics.png)
+![sonar-metrics](img/sonar-metrics.png) 
+![tech-metrics](img/tech-metrics.png)
 
 
 ## Overview
