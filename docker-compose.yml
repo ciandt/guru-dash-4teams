@@ -1,0 +1,41 @@
+version: "3.3"
+
+services:
+
+  influxdb:
+    image: influxdb:1.8.4
+    environment:
+      - INFLUXDB_DB=devops
+    ports:
+      - 8086:8086
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+      - ./grafana/dashboards/:/var/lib/grafana/dashboards/
+    environment:
+      - GF_INSTALL_PLUGINS=aceiot-svg-panel
+    depends_on:
+      - influxdb
+
+  strapi:
+    image: strapi/strapi
+    volumes:
+      - ./strapi:/srv/app
+    ports:
+      - 1337:1337
+
+  metrics-service:
+    build: ./metrics-service
+    environment:
+      - INFLUXDB=http://influxdb:8086/devops
+      - STRAPI_URL=http://strapi:1337
+      - STRAPI_USERNAME=api
+      - STRAPI_PASSWORD=techmetrics
+      - CRON=*/5 * * * *
+    depends_on:
+      - influxdb
+      - strapi
