@@ -1,4 +1,4 @@
-![logo](img/logo.png)
+![logo](img/logo-guru.png)
 
 # Get Ultimate Reports Updated (G.U.R.U) Dashboard for Teams
 
