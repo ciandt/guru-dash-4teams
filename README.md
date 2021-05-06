@@ -1,7 +1,7 @@
-# Devops Metrics
+# Get Ultimate Reports Updated (G.U.R.U) for Teams
 
 ## Visão Geral
-Stack responsável por disponibilizar métricas técnicas para que sejam visualizadas em um grafana.
+Stack responsável por disponibilizar métricas técnicas e operacionais para que sejam visualizadas em um grafana.
 
 ![arquitetura](img/arquitetura.png)
 
