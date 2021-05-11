@@ -6,11 +6,13 @@ import {logger} from "../shared/logger";
 import {getAzureMetrics} from "./azure/azure.provider";
 import {getSonarMetrics} from "./sonar/sonar.provider";
 import {getStrapiMetrics} from "./strapi/strapi.provider";
+import {getJiraMetrics} from "./jira/jira.provider";
 
 const providers: Record<string, ProviderFunction> = {
   azure: getAzureMetrics,
   sonar: getSonarMetrics,
   strapi: getStrapiMetrics,
+  jira: getJiraMetrics,
 };
 
 export async function providerFactory(datasource: IDataSource) {
