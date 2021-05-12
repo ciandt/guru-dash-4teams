@@ -1,5 +1,5 @@
 import { IJiraQuery } from './jira.types';
-import {getJiraBugs} from "./metrics/jira.bugs";
+import { getJiraBugs } from "./queries/jira.bugs";
 
 
 import {JiraProviderFunction} from "./jira.provider.types";

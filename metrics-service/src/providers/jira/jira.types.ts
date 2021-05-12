@@ -10,5 +10,18 @@ export interface IJiraQuery {
   name: string;
   type: string;
   description: string;
-  jql: string;
+  filter: string;
+  customFields: IJiraQueryCustomField[];
+}
+
+export interface IJiraQueryCustomField {
+  key: string;
+  name: string;
+  defaultValue?:string
+}
+
+export interface IJiraQueryResposeSprint {
+  id: number;                        
+  name: string;
+  state: string;
 }
