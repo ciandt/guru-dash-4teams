@@ -1,0 +1,3409 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 1,
+  "iteration": 1621538268782,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 4,
+      "panels": [],
+      "title": "General indicators (for all sprints and all bug phases)",
+      "type": "row"
+    },
+    {
+      "datasource": "influxdb",
+      "description": "Bugs that were opened in the first sprint in which they appeared are considered.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "red",
+            "mode": "fixed"
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 0,
+        "y": 1
+      },
+      "id": 2,
+      "options": {
+        "displayMode": "gradient",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "7.5.2",
+      "repeat": null,
+      "targets": [
+        {
+          "alias": "$tag_sprint",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "select count(issueName) from jira_bug group by sprint",
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Created bugs",
+      "transformations": [],
+      "type": "bargauge"
+    },
+    {
+      "datasource": "influxdb",
+      "description": "Closed bugs (status = 'Done') are considered in the last sprint in which they appear.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 6,
+        "y": 1
+      },
+      "id": 71,
+      "options": {
+        "displayMode": "gradient",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "7.5.2",
+      "targets": [
+        {
+          "alias": "$tag_lastSprint",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "select count(issueName) from jira_bug WHERE statusCategory = 'Done' group by lastSprint",
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Closed bugs",
+      "transformations": [],
+      "type": "bargauge"
+    },
+    {
+      "datasource": "influxdb",
+      "description": "Root causes of all bugs for all sprints of all phases",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 12,
+        "y": 1
+      },
+      "id": 33,
+      "options": {
+        "displayLabels": [],
+        "legend": {
+          "displayMode": "hidden",
+          "placement": "bottom",
+          "values": []
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {}
+      },
+      "pluginVersion": "7.5.2",
+      "targets": [
+        {
+          "alias": "$tag_rootcause",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT count(issueName) FROM jira_bug GROUP BY rootcause",
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "title": "Root causes",
+      "type": "piechart"
+    },
+    {
+      "datasource": "influxdb",
+      "description": "Considered the average time worked for all bugs that are 'Done'",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 18,
+        "y": 1
+      },
+      "id": 83,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.2",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(bugWorklogTime) FROM jira_bug where bugWorklogTime > 0 and statusCategory = 'Done'",
+          "queryType": "randomWalk",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Time spent on bugs (Avg)",
+      "type": "stat"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 111,
+      "panels": [
+        {
+          "datasource": "-- Mixed --",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 20
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 6,
+            "x": 0,
+            "y": 2
+          },
+          "id": 119,
+          "options": {
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true,
+            "text": {}
+          },
+          "pluginVersion": "7.5.2",
+          "repeat": "sprint",
+          "scopedVars": {
+            "sprint": {
+              "selected": true,
+              "text": "Not classified",
+              "value": "Not classified"
+            }
+          },
+          "targets": [
+            {
+              "alias": "Bug hours",
+              "datasource": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(bugWorklogTime) * 100 FROM jira_bug where bugWorklogTime > 0 and lastSprint =~ /^(${sprint})$/ group by lastSprint",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "Logged hours",
+              "datasource": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "select sum(timespent) from jira_hour where sprint =~ /^(${sprint})$/ group by sprint",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "$sprint",
+          "transformations": [
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "Rework",
+                "binary": {
+                  "left": "Bug hours",
+                  "operator": "/",
+                  "reducer": "sum",
+                  "right": "Logged hours"
+                },
+                "mode": "binary",
+                "reduce": {
+                  "reducer": "sum"
+                },
+                "replaceFields": true
+              }
+            }
+          ],
+          "type": "gauge"
+        },
+        {
+          "datasource": "-- Mixed --",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 20
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 6,
+            "x": 6,
+            "y": 2
+          },
+          "id": 139,
+          "options": {
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true,
+            "text": {}
+          },
+          "pluginVersion": "7.5.2",
+          "repeatIteration": 1621445825593,
+          "repeatPanelId": 119,
+          "scopedVars": {
+            "sprint": {
+              "selected": true,
+              "text": "Sprint 13",
+              "value": "Sprint 13"
+            }
+          },
+          "targets": [
+            {
+              "alias": "Bug hours",
+              "datasource": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(bugWorklogTime) * 100 FROM jira_bug where bugWorklogTime > 0 and lastSprint =~ /^(${sprint})$/ group by lastSprint",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "Logged hours",
+              "datasource": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "select sum(timespent) from jira_hour where sprint =~ /^(${sprint})$/ group by sprint",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "$sprint",
+          "transformations": [
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "Rework",
+                "binary": {
+                  "left": "Bug hours",
+                  "operator": "/",
+                  "reducer": "sum",
+                  "right": "Logged hours"
+                },
+                "mode": "binary",
+                "reduce": {
+                  "reducer": "sum"
+                },
+                "replaceFields": true
+              }
+            }
+          ],
+          "type": "gauge"
+        },
+        {
+          "datasource": "-- Mixed --",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 20
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 6,
+            "x": 12,
+            "y": 2
+          },
+          "id": 140,
+          "options": {
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true,
+            "text": {}
+          },
+          "pluginVersion": "7.5.2",
+          "repeatIteration": 1621445825593,
+          "repeatPanelId": 119,
+          "scopedVars": {
+            "sprint": {
+              "selected": true,
+              "text": "Sprint 14",
+              "value": "Sprint 14"
+            }
+          },
+          "targets": [
+            {
+              "alias": "Bug hours",
+              "datasource": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(bugWorklogTime) * 100 FROM jira_bug where bugWorklogTime > 0 and lastSprint =~ /^(${sprint})$/ group by lastSprint",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "Logged hours",
+              "datasource": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "select sum(timespent) from jira_hour where sprint =~ /^(${sprint})$/ group by sprint",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "$sprint",
+          "transformations": [
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "Rework",
+                "binary": {
+                  "left": "Bug hours",
+                  "operator": "/",
+                  "reducer": "sum",
+                  "right": "Logged hours"
+                },
+                "mode": "binary",
+                "reduce": {
+                  "reducer": "sum"
+                },
+                "replaceFields": true
+              }
+            }
+          ],
+          "type": "gauge"
+        },
+        {
+          "datasource": "-- Mixed --",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 20
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 6,
+            "x": 18,
+            "y": 2
+          },
+          "id": 141,
+          "options": {
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true,
+            "text": {}
+          },
+          "pluginVersion": "7.5.2",
+          "repeatIteration": 1621445825593,
+          "repeatPanelId": 119,
+          "scopedVars": {
+            "sprint": {
+              "selected": true,
+              "text": "Sprint 15",
+              "value": "Sprint 15"
+            }
+          },
+          "targets": [
+            {
+              "alias": "Bug hours",
+              "datasource": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(bugWorklogTime) * 100 FROM jira_bug where bugWorklogTime > 0 and lastSprint =~ /^(${sprint})$/ group by lastSprint",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "Logged hours",
+              "datasource": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "select sum(timespent) from jira_hour where sprint =~ /^(${sprint})$/ group by sprint",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "$sprint",
+          "transformations": [
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "Rework",
+                "binary": {
+                  "left": "Bug hours",
+                  "operator": "/",
+                  "reducer": "sum",
+                  "right": "Logged hours"
+                },
+                "mode": "binary",
+                "reduce": {
+                  "reducer": "sum"
+                },
+                "replaceFields": true
+              }
+            }
+          ],
+          "type": "gauge"
+        },
+        {
+          "datasource": "-- Mixed --",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 20
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 6,
+            "x": 0,
+            "y": 6
+          },
+          "id": 142,
+          "options": {
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true,
+            "text": {}
+          },
+          "pluginVersion": "7.5.2",
+          "repeatIteration": 1621445825593,
+          "repeatPanelId": 119,
+          "scopedVars": {
+            "sprint": {
+              "selected": true,
+              "text": "Sprint 17",
+              "value": "Sprint 17"
+            }
+          },
+          "targets": [
+            {
+              "alias": "Bug hours",
+              "datasource": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(bugWorklogTime) * 100 FROM jira_bug where bugWorklogTime > 0 and lastSprint =~ /^(${sprint})$/ group by lastSprint",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "Logged hours",
+              "datasource": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "select sum(timespent) from jira_hour where sprint =~ /^(${sprint})$/ group by sprint",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "$sprint",
+          "transformations": [
+            {
+              "id": "calculateField",
+              "options": {
+                "alias": "Rework",
+                "binary": {
+                  "left": "Bug hours",
+                  "operator": "/",
+                  "reducer": "sum",
+                  "right": "Logged hours"
+                },
+                "mode": "binary",
+                "reduce": {
+                  "reducer": "sum"
+                },
+                "replaceFields": true
+              }
+            }
+          ],
+          "type": "gauge"
+        }
+      ],
+      "title": "Rework history (for sprint)",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 8
+      },
+      "id": 125,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "influxdb",
+          "fieldConfig": {
+            "defaults": {},
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 12,
+            "x": 0,
+            "y": 9
+          },
+          "hiddenSeries": false,
+          "id": 137,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": false,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.2",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "repeat": null,
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_sprint",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "select mean(deltaTimeToResolveBug) from jira_bug where deltaTimeToResolveBug > 0 and statusCategory = 'Done' and phase =~ /^(${phase:pipe})$/  AND sprint =~ /^(${sprint:pipe})$/ group by sprint",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Time to resolve bugs (AVG)",
+          "tooltip": {
+            "shared": false,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "series",
+            "name": null,
+            "show": true,
+            "values": [
+              "total"
+            ]
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:115",
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:116",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "influxdb",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 6,
+            "w": 12,
+            "x": 12,
+            "y": 9
+          },
+          "hiddenSeries": false,
+          "id": 138,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": false,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.2",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_sprint",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "select count(issueName) from jira_bug where deltaTimeToResolveBug = 0 and statusCategory = 'Done' and phase =~ /^(${phase:pipe})$/  AND sprint =~ /^(${sprint:pipe})$/ group by sprint",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Amount of bugs fixed, but not resolved",
+          "tooltip": {
+            "shared": false,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "series",
+            "name": null,
+            "show": true,
+            "values": [
+              "total"
+            ]
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:115",
+              "format": "none",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:116",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "Time to resolve bugs (for bug phase and sprint)",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 89,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "influxdb",
+          "fieldConfig": {
+            "defaults": {
+              "unit": "s"
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 16
+          },
+          "hiddenSeries": false,
+          "id": 91,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": false,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.2",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_lastSprint",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT mean(bugWorklogTime) FROM jira_bug where bugWorklogTime > 0 and phase =~ /^(${phase})$/ and lastSprint =~ /^(${sprint})$/ group by lastSprint",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Time spent on bugs (AVG)",
+          "tooltip": {
+            "shared": false,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "series",
+            "name": null,
+            "show": true,
+            "values": [
+              "total"
+            ]
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:127",
+              "format": "s",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:128",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "influxdb",
+          "fieldConfig": {
+            "defaults": {
+              "unit": "s"
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 16
+          },
+          "hiddenSeries": false,
+          "id": 99,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": false,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.5.2",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_lastSprint",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(bugWorklogTime) FROM jira_bug where bugWorklogTime > 0 and phase =~ /^(${phase})$/ and lastSprint =~ /^(${sprint})$/ group by lastSprint",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Time spent on bugs (SUM)",
+          "tooltip": {
+            "shared": false,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "series",
+            "name": null,
+            "show": true,
+            "values": [
+              "total"
+            ]
+          },
+          "yaxes": [
+            {
+              "$$hashKey": "object:127",
+              "format": "s",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "$$hashKey": "object:128",
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "Worklog on bugs (for bug phase and sprint)",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 10
+      },
+      "id": 8,
+      "panels": [
+        {
+          "datasource": "influxdb",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 6,
+            "x": 0,
+            "y": 19
+          },
+          "id": 6,
+          "options": {
+            "displayLabels": [],
+            "legend": {
+              "displayMode": "list",
+              "placement": "bottom",
+              "values": [
+                "value"
+              ]
+            },
+            "pieType": "pie",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {}
+          },
+          "pluginVersion": "7.5.2",
+          "repeat": "sprint",
+          "scopedVars": {
+            "sprint": {
+              "selected": true,
+              "text": "Not classified",
+              "value": "Not classified"
+            }
+          },
+          "targets": [
+            {
+              "alias": "$tag_phase",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT count(issueName) FROM jira_bug WHERE sprint =~ /^(${sprint})$/ GROUP BY phase",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "$sprint",
+          "type": "piechart"
+        },
+        {
+          "datasource": "influxdb",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 6,
+            "x": 6,
+            "y": 19
+          },
+          "id": 143,
+          "options": {
+            "displayLabels": [],
+            "legend": {
+              "displayMode": "list",
+              "placement": "bottom",
+              "values": [
+                "value"
+              ]
+            },
+            "pieType": "pie",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {}
+          },
+          "pluginVersion": "7.5.2",
+          "repeatIteration": 1621445825593,
+          "repeatPanelId": 6,
+          "scopedVars": {
+            "sprint": {
+              "selected": true,
+              "text": "Sprint 13",
+              "value": "Sprint 13"
+            }
+          },
+          "targets": [
+            {
+              "alias": "$tag_phase",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT count(issueName) FROM jira_bug WHERE sprint =~ /^(${sprint})$/ GROUP BY phase",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "$sprint",
+          "type": "piechart"
+        },
+        {
+          "datasource": "influxdb",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 6,
+            "x": 12,
+            "y": 19
+          },
+          "id": 144,
+          "options": {
+            "displayLabels": [],
+            "legend": {
+              "displayMode": "list",
+              "placement": "bottom",
+              "values": [
+                "value"
+              ]
+            },
+            "pieType": "pie",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {}
+          },
+          "pluginVersion": "7.5.2",
+          "repeatIteration": 1621445825593,
+          "repeatPanelId": 6,
+          "scopedVars": {
+            "sprint": {
+              "selected": true,
+              "text": "Sprint 14",
+              "value": "Sprint 14"
+            }
+          },
+          "targets": [
+            {
+              "alias": "$tag_phase",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT count(issueName) FROM jira_bug WHERE sprint =~ /^(${sprint})$/ GROUP BY phase",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "$sprint",
+          "type": "piechart"
+        },
+        {
+          "datasource": "influxdb",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 6,
+            "x": 18,
+            "y": 19
+          },
+          "id": 145,
+          "options": {
+            "displayLabels": [],
+            "legend": {
+              "displayMode": "list",
+              "placement": "bottom",
+              "values": [
+                "value"
+              ]
+            },
+            "pieType": "pie",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {}
+          },
+          "pluginVersion": "7.5.2",
+          "repeatIteration": 1621445825593,
+          "repeatPanelId": 6,
+          "scopedVars": {
+            "sprint": {
+              "selected": true,
+              "text": "Sprint 15",
+              "value": "Sprint 15"
+            }
+          },
+          "targets": [
+            {
+              "alias": "$tag_phase",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT count(issueName) FROM jira_bug WHERE sprint =~ /^(${sprint})$/ GROUP BY phase",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "$sprint",
+          "type": "piechart"
+        },
+        {
+          "datasource": "influxdb",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 6,
+            "x": 0,
+            "y": 24
+          },
+          "id": 146,
+          "options": {
+            "displayLabels": [],
+            "legend": {
+              "displayMode": "list",
+              "placement": "bottom",
+              "values": [
+                "value"
+              ]
+            },
+            "pieType": "pie",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {}
+          },
+          "pluginVersion": "7.5.2",
+          "repeatIteration": 1621445825593,
+          "repeatPanelId": 6,
+          "scopedVars": {
+            "sprint": {
+              "selected": true,
+              "text": "Sprint 17",
+              "value": "Sprint 17"
+            }
+          },
+          "targets": [
+            {
+              "alias": "$tag_phase",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT count(issueName) FROM jira_bug WHERE sprint =~ /^(${sprint})$/ GROUP BY phase",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "$sprint",
+          "type": "piechart"
+        }
+      ],
+      "repeat": null,
+      "title": "Bug phase (for sprint)",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 11
+      },
+      "id": 14,
+      "panels": [
+        {
+          "datasource": "influxdb",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 6,
+            "x": 0,
+            "y": 12
+          },
+          "id": 20,
+          "options": {
+            "displayLabels": [],
+            "legend": {
+              "displayMode": "hidden",
+              "placement": "bottom",
+              "values": []
+            },
+            "pieType": "pie",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {}
+          },
+          "pluginVersion": "7.5.2",
+          "repeat": "sprint",
+          "scopedVars": {
+            "sprint": {
+              "selected": true,
+              "text": "Not classified",
+              "value": "Not classified"
+            }
+          },
+          "targets": [
+            {
+              "alias": "$tag_rootcause",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT count(issueName) FROM jira_bug WHERE sprint =~ /^(${sprint})$/ GROUP BY rootcause",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "$sprint",
+          "type": "piechart"
+        },
+        {
+          "datasource": "influxdb",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 6,
+            "x": 6,
+            "y": 12
+          },
+          "id": 130,
+          "options": {
+            "displayLabels": [],
+            "legend": {
+              "displayMode": "hidden",
+              "placement": "bottom",
+              "values": []
+            },
+            "pieType": "pie",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {}
+          },
+          "pluginVersion": "7.5.2",
+          "repeatIteration": 1621445825573,
+          "repeatPanelId": 20,
+          "scopedVars": {
+            "sprint": {
+              "selected": true,
+              "text": "Sprint 13",
+              "value": "Sprint 13"
+            }
+          },
+          "targets": [
+            {
+              "alias": "$tag_rootcause",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT count(issueName) FROM jira_bug WHERE sprint =~ /^(${sprint})$/ GROUP BY rootcause",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "$sprint",
+          "type": "piechart"
+        },
+        {
+          "datasource": "influxdb",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 6,
+            "x": 12,
+            "y": 12
+          },
+          "id": 131,
+          "options": {
+            "displayLabels": [],
+            "legend": {
+              "displayMode": "hidden",
+              "placement": "bottom",
+              "values": []
+            },
+            "pieType": "pie",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {}
+          },
+          "pluginVersion": "7.5.2",
+          "repeatIteration": 1621445825573,
+          "repeatPanelId": 20,
+          "scopedVars": {
+            "sprint": {
+              "selected": true,
+              "text": "Sprint 14",
+              "value": "Sprint 14"
+            }
+          },
+          "targets": [
+            {
+              "alias": "$tag_rootcause",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT count(issueName) FROM jira_bug WHERE sprint =~ /^(${sprint})$/ GROUP BY rootcause",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "$sprint",
+          "type": "piechart"
+        },
+        {
+          "datasource": "influxdb",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 6,
+            "x": 18,
+            "y": 12
+          },
+          "id": 132,
+          "options": {
+            "displayLabels": [],
+            "legend": {
+              "displayMode": "hidden",
+              "placement": "bottom",
+              "values": []
+            },
+            "pieType": "pie",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {}
+          },
+          "pluginVersion": "7.5.2",
+          "repeatIteration": 1621445825573,
+          "repeatPanelId": 20,
+          "scopedVars": {
+            "sprint": {
+              "selected": true,
+              "text": "Sprint 15",
+              "value": "Sprint 15"
+            }
+          },
+          "targets": [
+            {
+              "alias": "$tag_rootcause",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT count(issueName) FROM jira_bug WHERE sprint =~ /^(${sprint})$/ GROUP BY rootcause",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "$sprint",
+          "type": "piechart"
+        },
+        {
+          "datasource": "influxdb",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 6,
+            "x": 0,
+            "y": 17
+          },
+          "id": 133,
+          "options": {
+            "displayLabels": [],
+            "legend": {
+              "displayMode": "hidden",
+              "placement": "bottom",
+              "values": []
+            },
+            "pieType": "pie",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {}
+          },
+          "pluginVersion": "7.5.2",
+          "repeatIteration": 1621445825573,
+          "repeatPanelId": 20,
+          "scopedVars": {
+            "sprint": {
+              "selected": true,
+              "text": "Sprint 17",
+              "value": "Sprint 17"
+            }
+          },
+          "targets": [
+            {
+              "alias": "$tag_rootcause",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT count(issueName) FROM jira_bug WHERE sprint =~ /^(${sprint})$/ GROUP BY rootcause",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "$sprint",
+          "type": "piechart"
+        }
+      ],
+      "title": "Root causes (for sprint)",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
+      "id": 59,
+      "panels": [
+        {
+          "datasource": "influxdb",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "mappings": [],
+              "noValue": "No data",
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 24,
+            "x": 0,
+            "y": 21
+          },
+          "id": 60,
+          "options": {
+            "displayLabels": [],
+            "legend": {
+              "displayMode": "list",
+              "placement": "bottom",
+              "values": [
+                "value"
+              ]
+            },
+            "pieType": "pie",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "text": {}
+          },
+          "pluginVersion": "7.5.2",
+          "repeat": "phase",
+          "scopedVars": {
+            "phase": {
+              "selected": true,
+              "text": "PROD",
+              "value": "PROD"
+            }
+          },
+          "targets": [
+            {
+              "alias": "$tag_statusCategory",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT count(issueName) FROM jira_bug WHERE phase = '$phase' AND sprint =~ /^(${sprint:pipe})$/ GROUP BY statusCategory",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "Bug progress in: $phase",
+          "type": "piechart"
+        }
+      ],
+      "title": "Bug status progress (for bug phase and sprint)",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 13
+      },
+      "id": 148,
+      "panels": [
+        {
+          "datasource": "influxdb",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "left",
+                "displayMode": "auto",
+                "filterable": true
+              },
+              "links": [
+                {
+                  "targetBlank": true,
+                  "title": "",
+                  "url": "https://jiracielo.atlassian.net/browse/${__data.fields[1]}"
+                }
+              ],
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Time"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "dateTimeAsLocal"
+                  },
+                  {
+                    "id": "displayName",
+                    "value": "Created At"
+                  },
+                  {
+                    "id": "custom.displayMode",
+                    "value": "color-text"
+                  },
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "dark-green",
+                      "mode": "fixed"
+                    }
+                  },
+                  {
+                    "id": "custom.width",
+                    "value": 200
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "bugWorklogTime"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "s"
+                  },
+                  {
+                    "id": "displayName",
+                    "value": "Worklog Time"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "deltaTimeToResolveBug"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "ms"
+                  },
+                  {
+                    "id": "displayName",
+                    "value": "Time to Resolve Bug"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "issueName"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Issue Key"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "issueType"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Issue Type"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "sprint"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Initial Sprint"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "lastSprint"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Last Sprint"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "phase"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Bug Phase"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "resolutionDate"
+                },
+                "properties": [
+                  {
+                    "id": "noValue",
+                    "value": "- "
+                  },
+                  {
+                    "id": "unit",
+                    "value": "dateTimeAsLocal"
+                  },
+                  {
+                    "id": "custom.displayMode",
+                    "value": "color-text"
+                  },
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "blue",
+                      "mode": "fixed"
+                    }
+                  },
+                  {
+                    "id": "displayName",
+                    "value": "Resolution Date"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "rootcause"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Root Cause"
+                  },
+                  {
+                    "id": "custom.width",
+                    "value": 300
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "statusCategory"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Status Category"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "summary"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Issue Title"
+                  },
+                  {
+                    "id": "custom.width",
+                    "value": 300
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Status Category"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 145
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Created At"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 164
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "category"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Category"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "status"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Status"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 10,
+            "w": 24,
+            "x": 0,
+            "y": 14
+          },
+          "id": 150,
+          "options": {
+            "frameIndex": 13,
+            "showHeader": true,
+            "sortBy": []
+          },
+          "pluginVersion": "7.5.2",
+          "targets": [
+            {
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT issueName, summary, issueType, category, phase, sprint, lastSprint,  resolutionDate, bugWorklogTime, deltaTimeToResolveBug, rootcause, status, statusCategory from jira_bug",
+              "queryType": "randomWalk",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "table",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "Dataset",
+          "type": "table"
+        }
+      ],
+      "title": "Dataset from this dashboard (for all sprints and all bug phases)",
+      "type": "row"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 27,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": [
+            "Not classified",
+            "Sprint 13",
+            "Sprint 14",
+            "Sprint 15",
+            "Sprint 17"
+          ],
+          "value": [
+            "Not classified",
+            "Sprint 13",
+            "Sprint 14",
+            "Sprint 15",
+            "Sprint 17"
+          ]
+        },
+        "datasource": "influxdb",
+        "definition": "select distinct(sprint) from jira_bug",
+        "description": "Select sprint(s) to filter dashboard data",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Sprint",
+        "multi": true,
+        "name": "sprint",
+        "options": [],
+        "query": "select distinct(sprint) from jira_bug",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "tags": [],
+          "text": [
+            "UAT"
+          ],
+          "value": [
+            "UAT"
+          ]
+        },
+        "datasource": "influxdb",
+        "definition": "select distinct(phase) from jira_bug",
+        "description": "Bug phase ",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Bug phase",
+        "multi": true,
+        "name": "phase",
+        "options": [],
+        "query": "select distinct(phase) from jira_bug",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "1970-01-01T00:00:00.000Z",
+    "to": "1970-01-01T00:00:00.000Z"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Quality Data",
+  "uid": "WV0ZeYCGz",
+  "version": 20
+}

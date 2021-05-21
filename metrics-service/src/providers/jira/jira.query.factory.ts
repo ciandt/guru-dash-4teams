@@ -1,5 +1,6 @@
 import { IJiraQuery } from './jira.types';
 import { getJiraBugs } from "./queries/jira.bugs";
+import { getJiraHours } from "./queries/jira.hours";
 
 
 import {JiraProviderFunction} from "./jira.provider.types";
@@ -8,6 +9,7 @@ import { IPoint } from 'influx';
 
 const queries: Record<string, JiraProviderFunction> = {
     BUG: getJiraBugs,
+    HOUR: getJiraHours,
 };
 
 export async function jiraQueryFactory(url: string, apiVersion: string, authUser: string, authPass:string, jiraQuery: IJiraQuery) {
