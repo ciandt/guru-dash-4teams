@@ -1,4 +1,4 @@
-## SONAR Details
+## STRAPI Details
 
 ### The meta is empty:
 ```
