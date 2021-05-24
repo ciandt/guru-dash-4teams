@@ -12,7 +12,7 @@
   "bugsQuery": "WIQL to query bugs in Azure Devops"
 }
 ```
-Provider name: azure
+#### Provider name: azure
 
 The supported metrics are:
 - build

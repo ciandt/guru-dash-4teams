@@ -30,6 +30,6 @@
   ]
 }
 ```
-Provider name: sonar
+#### Provider name: sonar
 
 These are the minimum metrics required for the solution's standard dashboards to function. If you want to import more metrics, this is allowed. Just add to the metrics list. If you want fewer metrics than standards, this is also allowed, but standard dashboards will not have all of your data loaded.

@@ -52,7 +52,7 @@
   ]
 }
 ```
-Provider name: jira
+#### Provider name: jira
 
 In this metadata, you have the option of passing multiple queries within the "queries" array. Each element of this array represents a data set (according to the query's return) and will be stored in an "MEASUREMENT" of InfluxDB whose name is defined in the "name" property.
 
@@ -62,17 +62,17 @@ If you want to define other queries, just add new elements to the "queries" arra
 
 Currently, two types of queries are implemented: "BUG" and "HOUR".
 
-Implementing query types helps us to map to / from the jira API versus the points to be stored in the InfluxDB Measurement.
+Implementing query types helps us to map from/to the jira API versus the points to be stored in the InfluxDB Measurement.
 
 In addition, every custom field that has the name "sprint" will have a special treatment in the code, because in this field an array of sprints is returned in which this issue may have passed over time.
 
 New types of queries can be implemented, for that it is enough:
 
-Create a new JIRA query definition in:
+** Create a new JIRA query definition in: **
 ```
 ./metrics-service/src/providers/jira/queries/jira.<<type>>.ts
 ```
-Then it is necessary to add it to the Record of jira provider factory in:
+** Then it is necessary to add it to the Record of jira provider factory in: **
 
 ```
 ./metrics-service/src/providers/jira/jira.query.factory.ts
@@ -85,7 +85,7 @@ const queries: Record<string, JiraProviderFunction> = {
 };
 ```
 
-And lastly, register the types of fields in which you want to import from the JIRA API for your query type in:
+** And lastly, register the types of fields in which you want to import from the JIRA API for your query type in: **
 ```
 ./metrics-service/src/providers/jira/queries/jira.queryTypes.ts
 ```
