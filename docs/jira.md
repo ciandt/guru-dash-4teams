@@ -56,7 +56,7 @@
 
 In this metadata, you have the option of passing multiple queries within the "queries" array. Each element of this array represents a data set (according to the query's return) and will be stored in an "MEASUREMENT" of InfluxDB whose name is defined in the "name" property.
 
-The standard queries of this example metadata are necessary to load the standard "Plug & Play" dashboards.
+The standard queries names of this example metadata (**jira_bug** and **jira_hour**) are necessary to load the standard "Plug & Play" dashboards.
 
 If you want to define other queries, just add new elements to the "queries" array and use them in your grafana dashboards.
 
