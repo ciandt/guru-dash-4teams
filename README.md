@@ -40,58 +40,28 @@ pass: techmetrics
 ## Datasources
 Datasources are implementations of external providers, who must make the data available through Rest APIs, currently the following providers are available:
 
+#### Jira
+
+[JIRA DOCS](docs/jira.md)
+
 #### Azure
 
 [AZURE DOCS](docs/azure.md)
 
 #### Sonar
-The Meta should be configured as follows:
-```
-{
-  "key": "123",
-  "url": "URL Sonar",
-  "projects": [
-    "project keys"
-  ],
-  "metrics": [
-    "tests",
-    "coverage",
-    "sqale_index",
-    "lines",
-    "complexity",
-    "cognitive_complexity",
-    "duplicated_lines_density",
-    "duplicated_blocks",
-    "code_smells",
-    "new_code_smells",
-    "vulnerabilities",
-    "bugs",
-    "sqale_debt_ratio",
-    "reliability_rating",
-    "security_rating",
-    "sqale_rating",
-    "blocker_violations",
-    "critical_violations"
-  ]
-}
-```
-Provider name: sonar
 
-These are the minimum metrics required for the solution's standard dashboards to function. If you want to import more metrics, this is allowed. Just add to the metrics list. If you want fewer metrics than standards, this is also allowed, but standard dashboards will not have all of your data loaded.
+[SONAR DOCS](docs/sonar.md)
 
 #### Strapi
-The meta is empty:
-```
-{}
-```
-Provider name: strapi
 
-### Custom Providers
-New providers can be implemented, for jenkins, GOCD, Jira, among other possibilities, for that it is necessary:
+[STRAPI DOCS](docs/strapi.md)
+
+### New Custom Providers
+New providers can be implemented, for jenkins, GOCD, among other possibilities, for that it is necessary:
 
 Create a new provider in:
 ```
-./metrics-service/src/providers/nome_do_provider
+./metrics-service/src/providers/provider_name
 ```
 Follow sonar.provider as an example.
 
@@ -101,7 +71,7 @@ const providers: Record<string, ProviderFunction> = {
   azure: getAzureMetrics,
   sonar: getSonarMetrics,
   strapi: getStrapiMetrics,
-  novo_provider: getNovoProviderMetrics(),
+  new_provider: getNewProviderMetrics(),
 };
 ```
 
