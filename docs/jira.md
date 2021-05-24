@@ -68,11 +68,11 @@ In addition, every custom field that has the name "sprint" will have a special t
 
 New types of queries can be implemented, for that it is enough:
 
-** Create a new JIRA query definition in: **
+**Create a new JIRA query definition in:**
 ```
 ./metrics-service/src/providers/jira/queries/jira.<<type>>.ts
 ```
-** Then it is necessary to add it to the Record of jira provider factory in: **
+**Then it is necessary to add it to the Record of jira provider factory in:**
 
 ```
 ./metrics-service/src/providers/jira/jira.query.factory.ts
@@ -85,7 +85,7 @@ const queries: Record<string, JiraProviderFunction> = {
 };
 ```
 
-** And lastly, register the types of fields in which you want to import from the JIRA API for your query type in: **
+**And lastly, register the types of fields in which you want to import from the JIRA API for your query type in:**
 ```
 ./metrics-service/src/providers/jira/queries/jira.queryTypes.ts
 ```
