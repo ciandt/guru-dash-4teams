@@ -96,4 +96,4 @@ export const fieldsByQueryType: Record<string,string>  = {
     HOUR: "created, timespent, issuetype, issuekey, summary"
 };
 ```
-**IMPORTANT: Your jira preferred language must be English (Because dash filter use conditions "status='Done'").
+**IMPORTANT: Your jira preferred language must be English (Because dash filter use conditions "status='Done'").**
