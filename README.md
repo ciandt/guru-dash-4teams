@@ -29,7 +29,9 @@ Stack responsible for providing technical and operational metrics to be visualiz
 docker-compose up
 ```
 
-2 - Then it is necessary to configure datasources for application via strapi, through: http://localhost: 1337
+2 - Then it is necessary to configure datasources for application via strapi, through: http://localhost:1337
+
+Strapi datasorce is mandatory. The metrics-service application will be up, after you configure of the 1st time strapi datasource inside Strapi.
 
 Default access:
 user: admin@techmetrics.ciandt
@@ -52,7 +54,7 @@ Datasources are implementations of external providers, who must make the data av
 
 [SONAR DOCS](docs/sonar.md)
 
-#### Strapi
+#### Strapi (MANDATORY)
 
 [STRAPI DOCS](docs/strapi.md)
 
