@@ -22,7 +22,7 @@ services:
       - influxdb
 
   strapi:
-    image: strapi/strapi
+    image: strapi/strapi:alpine
     volumes:
       - ./strapi:/srv/app
     ports:
