@@ -39,3 +39,4 @@ services:
     depends_on:
       - influxdb
       - strapi
+    restart: always
