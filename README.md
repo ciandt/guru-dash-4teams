@@ -86,7 +86,7 @@ That done, it is enough that a new datasource is registered pointing to this pro
 ### Clear influx tables
 
 Ex: When you have changes in the strep meta, it is necessary to clean jira_bug and jira_hour in the BD
-
+```
 1 - pause metrics service container
     docker stop ID_CONTAINER
 
@@ -100,14 +100,15 @@ Ex: When you have changes in the strep meta, it is necessary to clean jira_bug a
 
 3 - Up container metrics service
     docker start ID_CONTAINER
-
+```
 ### Debug metric service
 
 After up the containers, if the information is not showing in the dashboard, look at the metrics-service log to analyze
-
+```
 docker-compose logs -f --tails=1000 metrics-service
-
+```
 ### Access KEY (JIRA)
-
+```
 https: use protected key via URL: https://id.atlassian.com/
 http: basic auth works normally
+```
