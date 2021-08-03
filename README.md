@@ -81,24 +81,27 @@ That done, it is enough that a new datasource is registered pointing to this pro
 
 -----------------
 
-###                                                                         Troubleshooting
+### Troubleshooting
 
 ### Clear influx tables
 
 Ex: When you have changes in the strep meta, it is necessary to clean jira_bug and jira_hour in the BD
-```
-1 - pause metrics service container
-    docker stop ID_CONTAINER
 
+1 - pause metrics service container
+```
+    docker stop ID_CONTAINER
+```
 2 - access influx container
+```
     docker exec -it ID_CONTAINER bash
     influx
     use devops
     DROP MEASUREMENT jira_bug
     DROP MEASUREMENT jira_hour
     exit
-
+```
 3 - Up container metrics service
+```
     docker start ID_CONTAINER
 ```
 ### Debug metric service
