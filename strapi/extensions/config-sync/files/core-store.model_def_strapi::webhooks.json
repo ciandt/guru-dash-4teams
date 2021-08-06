@@ -1,0 +1,34 @@
+{
+  "key": "model_def_strapi::webhooks",
+  "value": {
+    "uid": "strapi::webhooks",
+    "collectionName": "strapi_webhooks",
+    "info": {
+      "name": "Strapi webhooks",
+      "description": ""
+    },
+    "options": {
+      "timestamps": false
+    },
+    "attributes": {
+      "name": {
+        "type": "string"
+      },
+      "url": {
+        "type": "text"
+      },
+      "headers": {
+        "type": "json"
+      },
+      "events": {
+        "type": "json"
+      },
+      "enabled": {
+        "type": "boolean"
+      }
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

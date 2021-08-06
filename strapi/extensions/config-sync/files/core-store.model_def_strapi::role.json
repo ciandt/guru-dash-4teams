@@ -1,0 +1,57 @@
+{
+  "key": "model_def_strapi::role",
+  "value": {
+    "uid": "strapi::role",
+    "collectionName": "strapi_role",
+    "kind": "collectionType",
+    "info": {
+      "name": "Role",
+      "description": ""
+    },
+    "options": {
+      "timestamps": [
+        "created_at",
+        "updated_at"
+      ]
+    },
+    "attributes": {
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "unique": true,
+        "configurable": false,
+        "required": true
+      },
+      "code": {
+        "type": "string",
+        "minLength": 1,
+        "unique": true,
+        "configurable": false,
+        "required": true
+      },
+      "description": {
+        "type": "string",
+        "configurable": false
+      },
+      "users": {
+        "configurable": false,
+        "collection": "user",
+        "via": "roles",
+        "plugin": "admin",
+        "attribute": "user",
+        "column": "id",
+        "isVirtual": true
+      },
+      "permissions": {
+        "configurable": false,
+        "plugin": "admin",
+        "collection": "permission",
+        "via": "role",
+        "isVirtual": true
+      }
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

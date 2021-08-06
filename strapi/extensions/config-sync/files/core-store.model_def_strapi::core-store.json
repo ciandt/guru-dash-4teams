@@ -1,0 +1,34 @@
+{
+  "key": "model_def_strapi::core-store",
+  "value": {
+    "uid": "strapi::core-store",
+    "collectionName": "core_store",
+    "info": {
+      "name": "core_store",
+      "description": ""
+    },
+    "options": {
+      "timestamps": false
+    },
+    "attributes": {
+      "key": {
+        "type": "string"
+      },
+      "value": {
+        "type": "text"
+      },
+      "type": {
+        "type": "string"
+      },
+      "environment": {
+        "type": "string"
+      },
+      "tag": {
+        "type": "string"
+      }
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}
