@@ -1,0 +1,228 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::strapi::user",
+  "value": {
+    "uid": "strapi::user",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "firstname",
+      "defaultSortBy": "firstname",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "Id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "firstname": {
+        "edit": {
+          "label": "Firstname",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Firstname",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "lastname": {
+        "edit": {
+          "label": "Lastname",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Lastname",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "username": {
+        "edit": {
+          "label": "Username",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Username",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "email": {
+        "edit": {
+          "label": "Email",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Email",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "password": {
+        "edit": {
+          "label": "Password",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Password",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "resetPasswordToken": {
+        "edit": {
+          "label": "ResetPasswordToken",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "ResetPasswordToken",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "registrationToken": {
+        "edit": {
+          "label": "RegistrationToken",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "RegistrationToken",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "isActive": {
+        "edit": {
+          "label": "IsActive",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "IsActive",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "roles": {
+        "edit": {
+          "label": "Roles",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "Roles",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "blocked": {
+        "edit": {
+          "label": "Blocked",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "Blocked",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "firstname",
+        "lastname",
+        "username"
+      ],
+      "editRelations": [
+        "roles"
+      ],
+      "edit": [
+        [
+          {
+            "name": "firstname",
+            "size": 6
+          },
+          {
+            "name": "lastname",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "username",
+            "size": 6
+          },
+          {
+            "name": "email",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "password",
+            "size": 6
+          },
+          {
+            "name": "resetPasswordToken",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "registrationToken",
+            "size": 6
+          },
+          {
+            "name": "isActive",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "blocked",
+            "size": 4
+          }
+        ]
+      ]
+    }
+  },
+  "type": "object",
+  "environment": "",
+  "tag": ""
+}

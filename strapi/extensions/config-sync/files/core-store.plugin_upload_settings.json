@@ -1,0 +1,10 @@
+{
+  "key": "plugin_upload_settings",
+  "value": {
+    "sizeOptimization": true,
+    "responsiveDimensions": true
+  },
+  "type": "object",
+  "environment": "production",
+  "tag": ""
+}
