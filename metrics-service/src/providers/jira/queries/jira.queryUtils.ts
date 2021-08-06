@@ -33,8 +33,14 @@ export function getPropertiesForCustomFields(customFields:IJiraQueryCustomField[
     if(hasCustomFields){
         for(const field of customFields){
           if(field.name == 'sprint'){
+            //Some Jira projects come with sprint field as string, and some come as json object,
+            //that's why we need to check and adapt them as a standard (json object).
+            if (issue.fields[field.key] && (typeof issue.fields[field.key][0]) == 'string'){
+                issue.fields[field.key] = getSprintFieldFromStringToJson(issue.fields[field.key]);
+            }
             const firstSprint:IJiraQueryResposeSprint = issue.fields[field.key]?.reduce((prev:IJiraQueryResposeSprint, current:IJiraQueryResposeSprint) => (prev.id < current.id) ? prev : current);
             const lastSprint:IJiraQueryResposeSprint = issue.fields[field.key]?.reduce((prev:IJiraQueryResposeSprint, current:IJiraQueryResposeSprint) => (prev.id > current.id) ? prev : current);
+
             ipointTags[field.name] = firstSprint?.name || field.defaultValue || null; 
             ipointFields[field.name] = firstSprint?.name || field.defaultValue || null;
             
@@ -50,4 +56,22 @@ export function getPropertiesForCustomFields(customFields:IJiraQueryCustomField[
         "ipointTags": ipointTags,
         "ipointFields": ipointFields
     };
+}
+
+function getSprintFieldFromStringToJson( sprintFieldArr:string){
+      var sprintField = "";
+      var json = [];
+      for (var i = 0; i < sprintFieldArr.length; i++) {
+              sprintField = sprintFieldArr[i].split("[").slice(1).join("[");
+              sprintField = sprintField.replace(/=/g, '": "') ;
+              sprintField = sprintField.replace(/,/g, '","') ;
+              sprintField = "\"" + sprintField + "\"";
+              sprintField = sprintField.replace(/"id/g, '{\"id') ;
+              sprintField = sprintField.split (",\"goal")[0];
+              sprintField = sprintField + "},";
+              sprintField = sprintField.substr(0,sprintField.length-1);
+              sprintField = sprintField.replace(/(\r\n|\n|\r)/gm, "");
+              json.push (JSON.parse (sprintField));
+      }
+      return json;
 }
