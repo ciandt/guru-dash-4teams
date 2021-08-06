@@ -3,7 +3,7 @@ import { IJiraQueryCustomField, IJiraQueryResposeSprint, IJiraQuery } from '../j
 import { logger } from '../../../shared/logger';
 
 export function getJiraQuerySearchUrl(url:String, apiVersion: string, jiraQuery: IJiraQuery){
-    let urlJiraQuery = url.concat(`/rest/api/${apiVersion}/search?jql=${encodeURIComponent(jiraQuery.filter)}`);
+    let urlJiraQuery = url.concat(`/rest/api/${apiVersion}/search?jql=${encodeURI(jiraQuery.filter)}`);
     const fields = fieldsByQueryType[jiraQuery.type];
     const customFields:IJiraQueryCustomField[] = jiraQuery.customFields;
     const hasCustomFields = customFields && customFields.length > 0;
