@@ -274,7 +274,7 @@
       "pluginVersion": "7.5.2",
       "targets": [
         {
-          "alias": "$tag_rootcause",
+          "alias": "$tag_squad",
           "groupBy": [
             {
               "params": [
@@ -313,7 +313,7 @@
           "tags": []
         }
       ],
-      "title": "Root causes",
+      "title": "Squad",
       "type": "piechart"
     },
     {
@@ -2387,7 +2387,7 @@
           },
           "targets": [
             {
-              "alias": "$tag_rootcause",
+              "alias": "$tag_squad",
               "groupBy": [
                 {
                   "params": [
@@ -2404,7 +2404,7 @@
               ],
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT count(issueName) FROM jira_bug WHERE sprint =~ /^(${sprint})$/ GROUP BY rootcause",
+              "query": "SELECT count(issueName) FROM jira_bug WHERE sprint =~ /^(${sprint})$/ GROUP BY squad",
               "queryType": "randomWalk",
               "rawQuery": true,
               "refId": "A",
@@ -2489,7 +2489,7 @@
           },
           "targets": [
             {
-              "alias": "$tag_rootcause",
+              "alias": "$tag_squad",
               "groupBy": [
                 {
                   "params": [
@@ -2506,7 +2506,7 @@
               ],
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT count(issueName) FROM jira_bug WHERE sprint =~ /^(${sprint})$/ GROUP BY rootcause",
+              "query": "SELECT count(issueName) FROM jira_bug WHERE sprint =~ /^(${sprint})$/ GROUP BY squad",
               "queryType": "randomWalk",
               "rawQuery": true,
               "refId": "A",
@@ -2591,7 +2591,7 @@
           },
           "targets": [
             {
-              "alias": "$tag_rootcause",
+              "alias": "$tag_squad",
               "groupBy": [
                 {
                   "params": [
@@ -2608,7 +2608,7 @@
               ],
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT count(issueName) FROM jira_bug WHERE sprint =~ /^(${sprint})$/ GROUP BY rootcause",
+              "query": "SELECT count(issueName) FROM jira_bug WHERE sprint =~ /^(${sprint})$/ GROUP BY squad",
               "queryType": "randomWalk",
               "rawQuery": true,
               "refId": "A",
@@ -2693,7 +2693,7 @@
           },
           "targets": [
             {
-              "alias": "$tag_rootcause",
+              "alias": "$tag_squad",
               "groupBy": [
                 {
                   "params": [
@@ -2710,7 +2710,7 @@
               ],
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT count(issueName) FROM jira_bug WHERE sprint =~ /^(${sprint})$/ GROUP BY rootcause",
+              "query": "SELECT count(issueName) FROM jira_bug WHERE sprint =~ /^(${sprint})$/ GROUP BY squad",
               "queryType": "randomWalk",
               "rawQuery": true,
               "refId": "A",
@@ -2795,7 +2795,7 @@
           },
           "targets": [
             {
-              "alias": "$tag_rootcause",
+              "alias": "$tag_squad",
               "groupBy": [
                 {
                   "params": [
@@ -2812,7 +2812,7 @@
               ],
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT count(issueName) FROM jira_bug WHERE sprint =~ /^(${sprint})$/ GROUP BY rootcause",
+              "query": "SELECT count(issueName) FROM jira_bug WHERE sprint =~ /^(${sprint})$/ GROUP BY squad",
               "queryType": "randomWalk",
               "rawQuery": true,
               "refId": "A",
@@ -3164,7 +3164,7 @@
               {
                 "matcher": {
                   "id": "byName",
-                  "options": "rootcause"
+                  "options": "squad"
                 },
                 "properties": [
                   {
@@ -3286,7 +3286,7 @@
               ],
               "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT issueName, summary, issueType, category, phase, sprint, lastSprint,  resolutionDate, bugWorklogTime, deltaTimeToResolveBug, rootcause, status, statusCategory from jira_bug",
+              "query": "SELECT issueName, summary, issueType, category, phase, sprint, lastSprint,  resolutionDate, bugWorklogTime, deltaTimeToResolveBug, squad, status, statusCategory from jira_bug",
               "queryType": "randomWalk",
               "rawQuery": true,
               "refId": "A",
