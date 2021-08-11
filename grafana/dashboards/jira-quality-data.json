@@ -224,7 +224,7 @@
     },
     {
       "datasource": "influxdb",
-      "description": "Root causes of all bugs for all sprints of all phases",
+      "description": "Sprint of all bugs for all sprints of all phases",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -291,7 +291,7 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT count(issueName) FROM jira_bug GROUP BY rootcause",
+          "query": "SELECT count(issueName) FROM jira_bug GROUP BY squad",
           "queryType": "randomWalk",
           "rawQuery": true,
           "refId": "A",
@@ -2838,7 +2838,7 @@
           "type": "piechart"
         }
       ],
-      "title": "Root causes (for sprint)",
+      "title": "Sprint",
       "type": "row"
     },
     {
@@ -3169,7 +3169,7 @@
                 "properties": [
                   {
                     "id": "displayName",
-                    "value": "Root Cause"
+                    "value": "Sprint"
                   },
                   {
                     "id": "custom.width",
