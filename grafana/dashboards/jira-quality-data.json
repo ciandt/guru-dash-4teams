@@ -224,7 +224,7 @@
     },
     {
       "datasource": "influxdb",
-      "description": "Sprint of all bugs for all sprints of all phases",
+      "description": "Squad of all bugs for all sprints of all phases",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2838,7 +2838,7 @@
           "type": "piechart"
         }
       ],
-      "title": "Sprint",
+      "title": "Squad (for sprint)",
       "type": "row"
     },
     {
@@ -3169,7 +3169,7 @@
                 "properties": [
                   {
                     "id": "displayName",
-                    "value": "Sprint"
+                    "value": "squad"
                   },
                   {
                     "id": "custom.width",
