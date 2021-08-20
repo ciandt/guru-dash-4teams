@@ -50,6 +50,10 @@ Datasources are implementations of external providers, who must make the data av
 
 [AZURE DOCS](docs/azure.md)
 
+#### Bamboo
+
+[BAMBOO DOCS](docs/bamboo.md)
+
 #### Sonar
 
 [SONAR DOCS](docs/sonar.md)
