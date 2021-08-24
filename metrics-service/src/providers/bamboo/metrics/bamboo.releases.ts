@@ -52,7 +52,7 @@ export async function getPlanKey(url: string,authUser:string,authPass:string,lis
 //Get Deploys for PlanKey
 export async function getReleases(metadata: IBambooMetadata) {
 
-  const url:string = `http://${metadata.bambooServer}`
+  const url:string = metadata.bambooServer
   const authUser:string = metadata.user
   const authPass:string = metadata.key
 

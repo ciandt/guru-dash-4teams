@@ -9,7 +9,7 @@ import { getQuery } from '../bamboo.send';
 //Get All Plans
 export async function getPlans(listProjects:IBambooProject[],metadata: IBambooMetadata) {
   logger.info(`Bamboo: Task Getting Builds running`);
-  const url:string = `http://${metadata.bambooServer}`
+  const url:string = metadata.bambooServer
   const authUser:string = metadata.user
   const authPass:string = metadata.key
 
