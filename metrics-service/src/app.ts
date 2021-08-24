@@ -9,8 +9,10 @@ async function main() {
   try {
     await syncMetrics();
   } catch (err) {
-    logger.error(err, 'Error running process');
+    logger.error(err, `Error running process.`);
   }
 }
 
-main().then(() => schedule(cron, main));
+main()
+  .then(() => schedule(cron, main))
+  .catch(err => logger.error(err, `Error in scheduling execution.`));
