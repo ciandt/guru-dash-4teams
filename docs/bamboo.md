@@ -7,7 +7,9 @@
   "key": "User Key",
   "bambooServer": "Server IP Address",
   "projects": [
-    "Name of the projects in the Atlassian Bamboo"
+    {
+      "name":"project"
+    }
   ]
 }
 ```
