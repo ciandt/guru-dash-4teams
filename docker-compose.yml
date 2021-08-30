@@ -22,9 +22,9 @@ services:
       - influxdb
 
   strapi:
-    image: guru-dash-4teams-strapi:1.0
+    image: strapi/strapi:alpine
     volumes:
-      - ./strapi/extensions/config-sync/files:/strapi/extensions/config-sync/files
+      - ./strapi:/srv/app
     ports:
       - 1337:1337
 

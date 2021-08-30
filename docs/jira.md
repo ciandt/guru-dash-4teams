@@ -20,8 +20,8 @@
           "defaultValue": "Default value for empty value (Ex: DEV)"
         },
         {
-          "key": "Customfield key for BUG squad (Ex: customfield_11900)",
-          "name": "squad",
+          "key": "Customfield key for BUG root cause (Ex: customfield_11900)",
+          "name": "rootcause",
           "defaultValue": "Default value for empty value (Ex: Not classified)"
         },
         {

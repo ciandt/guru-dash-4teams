@@ -8,12 +8,6 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
-        "target": {
-          "limit": 100,
-          "matchAny": false,
-          "tags": [],
-          "type": "dashboard"
-        },
         "type": "dashboard"
       }
     ]
@@ -21,8 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 3,
-  "iteration": 1628681974526,
+  "iteration": 1619463478870,
   "links": [],
   "panels": [
     {
@@ -35,22 +28,19 @@
           },
           "mappings": [
             {
-              "options": {
-                "0": {
-                  "text": "OK"
-                }
-              },
-              "type": "value"
+              "from": "",
+              "id": 1,
+              "text": "OK",
+              "to": "",
+              "type": 1,
+              "value": "0"
             },
             {
-              "options": {
-                "from": 1,
-                "result": {
-                  "text": "NOK"
-                },
-                "to": 1000
-              },
-              "type": "range"
+              "from": "1",
+              "id": 2,
+              "text": "NOK",
+              "to": "1000",
+              "type": 2
             }
           ],
           "thresholds": {
@@ -95,7 +85,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "groupBy": [
@@ -191,7 +181,7 @@
           "titleSize": 14
         }
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "alias": "Test unit coverage (AVG)",
@@ -284,22 +274,19 @@
           },
           "mappings": [
             {
-              "options": {
-                "0": {
-                  "text": "OK"
-                }
-              },
-              "type": "value"
+              "from": "",
+              "id": 1,
+              "text": "OK",
+              "to": "",
+              "type": 1,
+              "value": "0"
             },
             {
-              "options": {
-                "from": 1,
-                "result": {
-                  "text": "NOK"
-                },
-                "to": 1000
-              },
-              "type": "range"
+              "from": "1",
+              "id": 2,
+              "text": "NOK",
+              "to": "1000",
+              "type": 2
             }
           ],
           "thresholds": {
@@ -344,7 +331,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "groupBy": [
@@ -398,54 +385,44 @@
           },
           "mappings": [
             {
-              "options": {
-                "from": 1,
-                "result": {
-                  "text": "A"
-                },
-                "to": 1.99
-              },
-              "type": "range"
+              "from": "1",
+              "id": 1,
+              "text": "A",
+              "to": "1.99",
+              "type": 2,
+              "value": "1"
             },
             {
-              "options": {
-                "from": 2,
-                "result": {
-                  "text": "B"
-                },
-                "to": 2.99
-              },
-              "type": "range"
+              "from": "2",
+              "id": 2,
+              "text": "B",
+              "to": "2.99",
+              "type": 2,
+              "value": "2"
             },
             {
-              "options": {
-                "from": 3,
-                "result": {
-                  "text": "C"
-                },
-                "to": 3.99
-              },
-              "type": "range"
+              "from": "3",
+              "id": 3,
+              "text": "C",
+              "to": "3.99",
+              "type": 2,
+              "value": "3"
             },
             {
-              "options": {
-                "from": 4,
-                "result": {
-                  "text": "D"
-                },
-                "to": 4.99
-              },
-              "type": "range"
+              "from": "4",
+              "id": 4,
+              "text": "D",
+              "to": "4.99",
+              "type": 2,
+              "value": "4"
             },
             {
-              "options": {
-                "from": 4,
-                "result": {
-                  "text": "E"
-                },
-                "to": 100
-              },
-              "type": "range"
+              "from": "4",
+              "id": 5,
+              "text": "E",
+              "to": "100",
+              "type": 2,
+              "value": "5"
             }
           ],
           "thresholds": {
@@ -502,7 +479,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "groupBy": [
@@ -556,54 +533,44 @@
           },
           "mappings": [
             {
-              "options": {
-                "from": 1,
-                "result": {
-                  "text": "A"
-                },
-                "to": 1.99
-              },
-              "type": "range"
+              "from": "1",
+              "id": 1,
+              "text": "A",
+              "to": "1.99",
+              "type": 2,
+              "value": "1"
             },
             {
-              "options": {
-                "from": 2,
-                "result": {
-                  "text": "B"
-                },
-                "to": 2.99
-              },
-              "type": "range"
+              "from": "2",
+              "id": 2,
+              "text": "B",
+              "to": "2.99",
+              "type": 2,
+              "value": "2"
             },
             {
-              "options": {
-                "from": 3,
-                "result": {
-                  "text": "C"
-                },
-                "to": 3.99
-              },
-              "type": "range"
+              "from": "3",
+              "id": 3,
+              "text": "C",
+              "to": "3.99",
+              "type": 2,
+              "value": "3"
             },
             {
-              "options": {
-                "from": 4,
-                "result": {
-                  "text": "D"
-                },
-                "to": 4.99
-              },
-              "type": "range"
+              "from": "4",
+              "id": 4,
+              "text": "D",
+              "to": "4.99",
+              "type": 2,
+              "value": "4"
             },
             {
-              "options": {
-                "from": 5,
-                "result": {
-                  "text": "E"
-                },
-                "to": 100
-              },
-              "type": "range"
+              "from": "5",
+              "id": 5,
+              "text": "E",
+              "to": "100",
+              "type": 2,
+              "value": "5"
             }
           ],
           "thresholds": {
@@ -660,7 +627,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "groupBy": [
@@ -714,54 +681,44 @@
           },
           "mappings": [
             {
-              "options": {
-                "from": 1,
-                "result": {
-                  "text": "A"
-                },
-                "to": 1.99
-              },
-              "type": "range"
+              "from": "1",
+              "id": 1,
+              "text": "A",
+              "to": "1.99",
+              "type": 2,
+              "value": "1"
             },
             {
-              "options": {
-                "from": 2,
-                "result": {
-                  "text": "B"
-                },
-                "to": 2.99
-              },
-              "type": "range"
+              "from": "2",
+              "id": 2,
+              "text": "B",
+              "to": "2.99",
+              "type": 2,
+              "value": "2"
             },
             {
-              "options": {
-                "from": 3,
-                "result": {
-                  "text": "C"
-                },
-                "to": 3.99
-              },
-              "type": "range"
+              "from": "3",
+              "id": 3,
+              "text": "C",
+              "to": "3.99",
+              "type": 2,
+              "value": "3"
             },
             {
-              "options": {
-                "from": 4,
-                "result": {
-                  "text": "D"
-                },
-                "to": 4.99
-              },
-              "type": "range"
+              "from": "4",
+              "id": 4,
+              "text": "D",
+              "to": "4.99",
+              "type": 2,
+              "value": "4"
             },
             {
-              "options": {
-                "from": 5,
-                "result": {
-                  "text": "E"
-                },
-                "to": 5.99
-              },
-              "type": "range"
+              "from": "5",
+              "id": 5,
+              "text": "E",
+              "to": "5.99",
+              "type": 2,
+              "value": "5"
             }
           ],
           "thresholds": {
@@ -818,7 +775,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "groupBy": [
@@ -868,6 +825,10 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "influxdb",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -894,7 +855,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -999,22 +960,7 @@
     {
       "datasource": "influxdb",
       "fieldConfig": {
-        "defaults": {
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
+        "defaults": {},
         "overrides": []
       },
       "gridPos": {
@@ -1179,6 +1125,10 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "influxdb",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1205,7 +1155,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1310,10 +1260,6 @@
     {
       "collapsed": false,
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1331,6 +1277,10 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "influxdb",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1357,7 +1307,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1465,6 +1415,10 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "influxdb",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1491,7 +1445,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1599,6 +1553,10 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "influxdb",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1625,7 +1583,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1720,10 +1678,6 @@
     {
       "collapsed": false,
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1773,7 +1727,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1915,7 +1869,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2013,6 +1967,10 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "influxdb",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2039,7 +1997,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2169,7 +2127,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "7.5.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2270,315 +2228,10 @@
         "align": false,
         "alignLevel": null
       }
-    },
-    {
-      "datasource": "influxdb",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": []
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 6,
-        "x": 0,
-        "y": 27
-      },
-      "id": 34,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.0",
-      "targets": [
-        {
-          "alias": "Tech Debt (wd)",
-          "groupBy": [
-            {
-              "params": [
-                "project"
-              ],
-              "type": "tag"
-            }
-          ],
-          "hide": false,
-          "measurement": "code_smells",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT ceil(sum(projectValue) / 60 / 24) FROM (SELECT last(value) as projectValue FROM \"sqale_index\"  group by project)",
-          "queryType": "randomWalk",
-          "rawQuery": true,
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "Total LOC",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "hide": false,
-          "measurement": "lines",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT sum(projectValue) FROM (SELECT last(value) as projectValue FROM \"lines\"  group by project)",
-          "rawQuery": true,
-          "refId": "C",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "Code Complexity",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "hide": false,
-          "measurement": "complexity",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT sum(projectValue) FROM (SELECT last(value) as projectValue FROM \"complexity\"  group by project)",
-          "rawQuery": true,
-          "refId": "D",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "Cognitive Complexity",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "hide": false,
-          "measurement": "complexity",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT sum(projectValue) FROM (SELECT last(value) as projectValue FROM \"cognitive_complexity\"  group by project)",
-          "rawQuery": true,
-          "refId": "E",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "Duplicated Blocks",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "hide": false,
-          "measurement": "duplicated_blocks",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT sum(projectValue) FROM (SELECT last(value) as projectValue FROM \"duplicated_blocks\"  group by project)",
-          "rawQuery": true,
-          "refId": "G",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "Issues",
-          "groupBy": [
-            {
-              "params": [
-                "project"
-              ],
-              "type": "tag"
-            }
-          ],
-          "measurement": "code_smells",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT sum(projectValue) FROM (SELECT last(value) as projectValue FROM \"code_smells\"  group by project)",
-          "queryType": "randomWalk",
-          "rawQuery": true,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "New Issues",
-          "groupBy": [
-            {
-              "params": [
-                "project"
-              ],
-              "type": "tag"
-            }
-          ],
-          "hide": false,
-          "measurement": "code_smells",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT sum(projectValue) FROM (SELECT last(value) as projectValue FROM \"new_code_smells\"  group by project)",
-          "queryType": "randomWalk",
-          "rawQuery": true,
-          "refId": "F",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Code Metrics",
-      "type": "stat"
     }
   ],
   "refresh": false,
-  "schemaVersion": 30,
+  "schemaVersion": 27,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -2586,9 +2239,14 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": " next-automatic-debit:master",
-          "value": " next-automatic-debit:master"
+          "selected": true,
+          "tags": [],
+          "text": [
+            ""
+          ],
+          "value": [
+            ""
+          ]
         },
         "datasource": "influxdb",
         "definition": "Select distinct(project) from coverage",
@@ -2606,6 +2264,7 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
+        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
