@@ -4,12 +4,14 @@ import {ProviderFunction} from "./provider.types";
 import {logger} from "../shared/logger";
 
 import {getAzureMetrics} from "./azure/azure.provider";
+import {getBambooMetrics} from "./bamboo/bamboo.provider";
 import {getSonarMetrics} from "./sonar/sonar.provider";
 import {getStrapiMetrics} from "./strapi/strapi.provider";
 import {getJiraMetrics} from "./jira/jira.provider";
 
 const providers: Record<string, ProviderFunction> = {
   azure: getAzureMetrics,
+  bamboo: getBambooMetrics,
   sonar: getSonarMetrics,
   strapi: getStrapiMetrics,
   jira: getJiraMetrics,
