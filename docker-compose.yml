@@ -16,6 +16,7 @@ services:
     volumes:
       - ./grafana/provisioning/:/etc/grafana/provisioning/
       - ./grafana/dashboards/:/var/lib/grafana/dashboards/
+      - ./grafana/conf/grafana.ini:/etc/grafana/grafana.ini
     environment:
       - GF_INSTALL_PLUGINS=aceiot-svg-panel
     depends_on:
