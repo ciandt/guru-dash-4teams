@@ -17,6 +17,16 @@ export async function getPlanKey(url: string,authUser:string,authPass:string,lis
       logger.info(`validate project ${field.name} exist - Bamboo`);
       const urlBambooProject = url.concat(`/rest/api/latest/project/${field.name}`);
 
+      const sizePlans = await getQuery({auth: { username: authUser, password: authPass }},
+        urlBambooProject.concat(`.json`))
+      .then((response) => {
+          return response;
+      });
+
+      const size = sizePlans.data.plans.size;
+
+      logger.info(`The size of all plans is ${size}`);
+
       const getProject = await getQuery({auth: { username: authUser, password: authPass }}, urlBambooProject)
       .then((response) => { return response; });
       const statusResponse = getProject.status
@@ -29,7 +39,7 @@ export async function getPlanKey(url: string,authUser:string,authPass:string,lis
       logger.info(`Current project key: ${projetData.key}`);
 
       const getPlans = await getQuery({auth: { username: authUser, password: authPass }},
-        urlBambooProject.concat(`.json?expand=plans`))
+        urlBambooProject.concat(`.json?expand=plans&max-result=${size}`))
       .then((response) => {
           return response;
       });

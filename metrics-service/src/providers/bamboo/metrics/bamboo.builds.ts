@@ -33,8 +33,18 @@ export async function getPlans(listProjects:IBambooProject[],metadata: IBambooMe
       const projetData = getProject.data;
       logger.info(`Current project key: ${projetData.key}`);
 
+      const sizePlans = await getQuery({auth: { username: authUser, password: authPass }},
+        urlBambooProject.concat(`.json`))
+      .then((response) => {
+          return response;
+      });
+
+      const size = sizePlans.data.plans.size;
+
+      logger.info(`The size of all plans is ${size}`);
+
       const getPlans = await getQuery({auth: { username: authUser, password: authPass }},
-        urlBambooProject.concat(`.json?expand=plans`))
+        urlBambooProject.concat(`.json?expand=plans&max-result=${size}`))
       .then((response) => {
           return response;
       });
