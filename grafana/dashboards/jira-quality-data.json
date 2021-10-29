@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1621538268782,
+  "iteration": 1635514932079,
   "links": [],
   "panels": [
     {
@@ -79,7 +79,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "7.5.2",
+      "pluginVersion": "7.5.4",
       "repeat": null,
       "targets": [
         {
@@ -174,7 +174,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "7.5.2",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "alias": "$tag_lastSprint",
@@ -364,7 +364,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.2",
+      "pluginVersion": "7.5.4",
       "targets": [
         {
           "groupBy": [
@@ -3325,21 +3325,10 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": [
-            "Not classified",
-            "Sprint 13",
-            "Sprint 14",
-            "Sprint 15",
-            "Sprint 17"
-          ],
-          "value": [
-            "Not classified",
-            "Sprint 13",
-            "Sprint 14",
-            "Sprint 15",
-            "Sprint 17"
-          ]
+          "selected": true,
+          "tags": [],
+          "text": [],
+          "value": []
         },
         "datasource": "influxdb",
         "definition": "select distinct(sprint) from jira_bug",
@@ -3367,12 +3356,8 @@
         "current": {
           "selected": true,
           "tags": [],
-          "text": [
-            "UAT"
-          ],
-          "value": [
-            "UAT"
-          ]
+          "text": [],
+          "value": []
         },
         "datasource": "influxdb",
         "definition": "select distinct(phase) from jira_bug",
@@ -3405,5 +3390,5 @@
   "timezone": "",
   "title": "Quality Data",
   "uid": "WV0ZeYCGz",
-  "version": 20
+  "version": 1
 }
