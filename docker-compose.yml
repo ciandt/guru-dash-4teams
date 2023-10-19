@@ -21,23 +21,22 @@ services:
       - GF_INSTALL_PLUGINS=aceiot-svg-panel
     depends_on:
       - influxdb
-
-  strapi:
-    image: strapi/strapi
+  metrics-config:
+    build: 
+      context: ./metrics-config
+      dockerfile: Dockerfile
     volumes:
-      - ./strapi:/srv/app
+      - ./metrics-config:/app
     ports:
-      - 1337:1337
-
+      - 8080:8080
+    restart: always
   metrics-service:
     build: ./metrics-service
     environment:
       - INFLUXDB=http://influxdb:8086/devops
-      - STRAPI_URL=http://strapi:1337
-      - STRAPI_USERNAME=api
-      - STRAPI_PASSWORD=techmetrics
-      - CRON=*/5 * * * *
+      - METRICS_CONFIG=http://metrics-config:8080
+      - CRON=*/1 * * * *
     depends_on:
       - influxdb
-      - strapi
+      - metrics-config
     restart: always

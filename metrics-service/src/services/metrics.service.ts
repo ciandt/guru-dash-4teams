@@ -1,6 +1,6 @@
 import { logger } from '../shared/logger';
 import {providerFactory} from "../providers/provider.factory";
-import {getDatasources} from "../providers/strapi/strapi.provider";
+import {getDatasources} from "../providers/metrics-config/metrics-config.provider";
 
 export async function syncMetrics() {
   const datasources = await getDatasources();

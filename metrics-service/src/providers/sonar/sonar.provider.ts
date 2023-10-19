@@ -5,8 +5,10 @@ import axios from 'axios';
 
 export async function getSonarMetrics(metadata: ISonarMetadata) {
   const result: IPoint[] = [];
-
-  for (const project of metadata.projects) {
+  logger.info('URL ' + metadata.url);
+  logger.info('Metrics ' + metadata.metrics);
+  logger.info('Projects ' + metadata.projects);
+  for (var project of metadata.projects) {
     logger.info(`Getting sonar measures for: ${project}`);
 
     let next = true;
