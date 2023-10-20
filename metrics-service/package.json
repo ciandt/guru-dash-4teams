@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node ./build/app.js",
-    "start:dev": "STRAPI_URL=\"http://localhost:1337\" STRAPI_USERNAME=\"api\" STRAPI_PASSWORD=\"techmetrics\" INFLUXDB=\"http://localhost:8086/devops\"  CRON=\"* * * * *\" tsnd ./src/app.ts"
+    "start:dev": "METRICS_CONFIG=\"http://localhost:8080\" INFLUXDB=\"http://localhost:8086/devops\"  CRON=\"* * * * *\" tsnd ./src/app.ts"
   },
   "author": "",
   "license": "ISC",
